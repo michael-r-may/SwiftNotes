@@ -24,12 +24,15 @@ Note that there are also two more parameters to both these methods that have def
 public func assert(
       @autoclosure condition: () -> Bool,
       @autoclosure _ message: () -> String = String(),
-      file: StaticString = #file, line: UInt = #line
+      file: StaticString = #file, 
+      line: UInt = #line
     )
 ```
 
 ####Fatal Errors
 Use `fatalError` to signal a failure and halt the program. This can never be compiled out.
+
+All of the arguments to the assert and fatalError calls are autoclosured.
 
 ####Autoclosure
 Directly from Mike Ash's article (see above):
