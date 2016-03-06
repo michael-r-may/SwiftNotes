@@ -1,8 +1,8 @@
-# SwiftNotes
+# Swift Notes
 A collection of notes, tips and tricks that I want to remember when working with Ruby
 
 ####Assertions and Preconditions
-There is a great blog post by [Mike Ash](https://www.mikeash.com/pyblog/friday-qa-2016-03-04-swift-asserts.html) going into detail.
+There is a great blog post by [Mike Ash](https://www.mikeash.com/pyblog/friday-qa-2016-03-04-swift-asserts.html) going into detail as well as [another](https://www.mikeash.com/pyblog/friday-qa-2013-05-03-proper-use-of-asserts.html) about why you should use them, and how, and that they should never be compiled out.
 
 Use `assert` when you are happy to have the assert removed from optimised builds, and use `precondition` when you want it to remain (you can use unchecked builds to get rid of them too, but I don't know why you would do that).
 
