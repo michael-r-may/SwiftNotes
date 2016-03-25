@@ -62,3 +62,57 @@ func &&(a: Bool, @autoclosure b: () -> Bool) -> Bool {
     }
 }
 ```
+
+
+####Lazy
+Use lazy to delay computation until it's needed. 
+
+For example,
+
+```
+class Avatar {
+  static let defaultSmallSize = CGSize(width: 64, height: 64)
+
+  lazy var smallImage: UIImage = self.largeImage.resizedTo(Avatar.defaultSmallSize)
+  var largeImage: UIImage
+
+  init(largeImage: UIImage) {
+    self.largeImage = largeImage
+  }
+}
+```
+
+#####Lazy Closures
+It works with closures
+
+```
+lazy var smallImage: UIImage = {
+    let size = CGSize(
+      width: min(Avatar.defaultSmallSize.width, self.largeImage.size.width),
+      height: min(Avatar.defaultSmallSize.height, self.largeImage.size.height)
+    )
+    return self.largeImage.resizedTo(size)
+  }()
+```
+
+And you can even reference self safely because the closure can never be executed until self exists.
+
+You can’t create lazy let instance properties in Swift to provide constants that would only be computed if accessed. Let constants declared at global scope or declared as a type property (using static let, not as instance properties) are automatically lazy (and thread-safe.
+
+#####Lazy Sequences
+
+You can apply delayed computation to sequences too, which can be a powerful saving when they are computationally intense calculated sequences.
+
+```
+func increment(x: Int) -> Int {
+  print("Computing next value of \(x)")
+  return x+1
+}
+
+let array = Array(0..<1000)
+let incArray = array.lazy.map(increment)
+print("Result:")
+print(incArray[0], incArray[4])
+```
+
+Original source for lazy information. http://alisoftware.github.io/swift/2016/02/28/being-lazy
