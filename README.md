@@ -116,3 +116,13 @@ print(incArray[0], incArray[4])
 ```
 
 Original source for lazy information. http://alisoftware.github.io/swift/2016/02/28/being-lazy
+
+#### Strong vs Weak Outlets
+
+Scott Berrevoets proposes three rules for deciding what decorator to choose for your interface builder outlets:
+
+- ! needs a guarantee that the view exists, so always use strong to provide that guarantee
+- If it's possible the view isn't part of the view hierarchy, use ? and appropriate optional-handling (optional binding/chaining) for safety. 
+- If you don't need a view anymore after removing it from the view hierarchy, use weak so it gets removed from memory.
+
+Original Article: [scottberrevoets.com](http://scottberrevoets.com/2016/03/21/outlets-strong-or-weak/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_243)
