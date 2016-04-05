@@ -125,4 +125,42 @@ Scott Berrevoets proposes three rules for deciding what decorator to choose for 
 - If it's possible the view isn't part of the view hierarchy, use ? and appropriate optional-handling (optional binding/chaining) for safety. 
 - If you don't need a view anymore after removing it from the view hierarchy, use weak so it gets removed from memory.
 
-Original Article: [scottberrevoets.com](http://scottberrevoets.com/2016/03/21/outlets-strong-or-weak/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_243)
+Original Article: [scottberrevoets.com](http://scottberrevoets.com/2016/03/21/outlets-strong-or-weak/)
+
+#### Tuples
+
+Tuples consist of zero or more types (typically String, Integer, Character and Bool, as well as other tuples). Tuples are also passed by value (copied), not by reference. You create them in this kind of a way
+
+```
+let person = (42, false, “Michael”)
+let person: (Int, Bool, String) = (42, false, “Michael”)
+let person = (age: 42, isTall: false, name: “Michael”)
+```
+
+You access the individual elements by either dot index format or via their name (if named).
+
+```
+print(person.age)
+print(person.0)
+```
+
+If you plan to use the tuple in multiple (hah!) places, a typealias is your friend. This is especially useful for returning tuples from functions.
+
+```
+typealias Person = (age: Int, isTall: Bool, name: String)
+
+func createUser() -> Person {
+      ...
+}
+```
+
+Did you know that “Void” is just a typealias for “()”, or the empty tuple. 
+
+```
+func doNothingA() -> Void { }
+```
+
+Does not return nothing, as you think, but instead returns a tuple with zero elements.
+
+
+Original Article: [medium.com](https://medium.com/swift-programming/swift-tuple-328aecff50e7)
