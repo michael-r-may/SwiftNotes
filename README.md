@@ -162,5 +162,8 @@ func doNothingA() -> Void { }
 
 Does not return nothing, as you think, but instead returns a tuple with zero elements.
 
-
 Original Article: [medium.com](https://medium.com/swift-programming/swift-tuple-328aecff50e7)
+
+#### Always Prefix Extensions on Objective-C classes
+>Swift extensions on Objective-C classes still need to be prefixed. You can use @objc(prefix_name) to keep the name pretty  in Swift and expose a prefixed version for the ObjC runtime."
+[pspdfkit.com](https://pspdfkit.com/blog/2016/surprises-with-swift-extensions/)
